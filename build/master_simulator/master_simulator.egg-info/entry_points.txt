@@ -1,0 +1,4 @@
+[console_scripts]
+simulator_node = simulator.simulation:main
+test_simulator_node = simulator.test_simulation:main
+
