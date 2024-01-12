@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+        <!-- <ros2_control_plugin>gazebo_ros2_control/DefaultRobotHWSim</ros2_control_plugin>
+        <control_period>0.001</control_period> -->
+        <robot_namespace>/</robot_namespace>
+        <parameters>$(find master_simulator)/config/controller_config.yaml</parameters>
+    </plugin>
+    </gazebo>
+
+</robot>

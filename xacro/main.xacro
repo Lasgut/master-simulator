@@ -4,12 +4,14 @@
     <link name="base_link"></link>
 
     <!-- Include the Modular Xacro Files -->
+    <xacro:include filename="include.xacro"/>
     <xacro:include filename="link0.xacro"/>
     <xacro:include filename="link1.xacro"/>
     <xacro:include filename="link2.xacro"/>
     <xacro:include filename="link3.xacro"/>
     <xacro:include filename="link4.xacro"/>
     <xacro:include filename="link5.xacro"/>
+    <!-- <xacro:include filename="plugins.xacro"/> -->
 
     <xacro:link0 parent="base_link"/>
     <xacro:link1 parent="link0"/>
@@ -17,6 +19,8 @@
     <xacro:link3 parent="link2"/>
     <xacro:link4 parent="link3"/>
     <xacro:link5 parent="link4"/>
+
+
 
 </robot>
 

@@ -1,18 +1,39 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro name="link0" params="parent">
+
+    <link name="body0">
+      <visual>
+        <origin xyz="-0.075 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="0.15 0.02 0.02"/> 
+        </geometry>
+        <material name="grey"/>
+      </visual>
+      <inertial>
+        <mass value="0.341"/>
+        <origin xyz="-0.075 -0.006 -0.003"/> 
+        <inertia ixx="0.000099" ixy="0.000139" ixz="0.000115" iyy="0.002920" iyz="0.000003" izz="0.002934"/> 
+      </inertial>
+    </link>
+
+    <joint name="base_link_to_body0" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0"/> 
+      <parent link="${parent}"/>
+      <child link="body0"/>
+    </joint>
     
     <link name="link0">
       <visual>
         <geometry>
           <cylinder radius="0.015" length="0.04"/> 
         </geometry>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
       </visual>
     </link>
 
     <joint name="joint1" type="revolute">
-      <axis xyz="0 0 1"/> 
+      <axis xyz="0 0 1"/>
+      <dynamics damping="1.0" friction="1.0"/> 
       <limit effort="1" lower="-3.1416" upper="3.1416" velocity="0.5"/>
       <origin xyz="0 0 0" rpy="0 0 0"/> 
       <parent link="${parent}"/>
