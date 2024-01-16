@@ -34,11 +34,18 @@
     <joint name="joint2" type="revolute">
       <axis xyz="0 0 1"/> 
       <dynamics damping="1.0" friction="1.0"/> 
-      <limit effort="1" lower="-3.1416" upper="3.1416" velocity="0.5"/>
+      <limit effort="100" lower="-3.1416" upper="3.1416" velocity="0.5"/>
       <origin xyz="-0.02 0 0.0462" rpy="1.5707 0 3.1415"/> 
       <parent link="${parent}"/>
       <child link="link1"/>
     </joint>
+
+    <transmission name="joint2_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="joint2">
+        <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
 
   </xacro:macro>
 </robot>

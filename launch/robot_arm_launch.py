@@ -23,6 +23,8 @@ def generate_launch_description():
     with open(robot_urdf_path, 'r') as infp:
         robot_urdf = infp.read()
 
+    controller_yaml = os.path.join(simulator_pkg_dir, 'config', 'controller_config.yaml')
+
 
     # Start Ignition Gazebo with an empty world
     ign_gazebo = ExecuteProcess(
@@ -68,6 +70,16 @@ def generate_launch_description():
         arguments=['-d', PathJoinSubstitution([simulator_pkg_dir, 'config', 'robot_arm.rviz'])],
     )
 
+    controller_spawner = Node(
+        package='controller_manager',
+        executable='ros2_control_node',
+        name='controller_spawner',
+        namespace='',
+        output='screen',
+        parameters=[{'use_sim_time': use_sim_time, 'robot_description': robot_urdf, 'controller_yaml': controller_yaml}],
+        arguments=['controller_manager', 'spawner', '--use_sim_time', '--dont_launch', 'joint_trajectory_controller']
+    )
+
 
 
 
@@ -82,6 +94,9 @@ def generate_launch_description():
         # start rviz
         rviz_node,
         
+        # controller
+        controller_spawner
+
         # uncomment to spawn in gazebo
         #ign_gazebo,
         #spawn_entity,
