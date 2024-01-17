@@ -11,7 +11,7 @@
     <xacro:include filename="link3.xacro"/>
     <xacro:include filename="link4.xacro"/>
     <xacro:include filename="link5.xacro"/>
-    <!-- <xacro:include filename="plugins.xacro"/> -->
+    <!-- <xacro:include filename="plugins.xacro"/>s -->
 
     <xacro:link0 parent="base_link"/>
     <xacro:link1 parent="link0"/>
